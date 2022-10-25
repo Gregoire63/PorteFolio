@@ -1,0 +1,19 @@
+{
+  "name": "openlayers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "ol": "7.1.0"
+  },
+  "devDependencies": {
+    "vite": "^3.0.3",
+    "@babel/core": "latest"
+  },
+  "scripts": {
+    "start": "vite",
+    "build": "vite build"
+  },
+  "author": "",
+  "license": "ISC"
+}
