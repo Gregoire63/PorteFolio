@@ -1,6 +1,3 @@
-# Custom Netlify Headers
-# https://www.netlify.com/docs/headers-and-basic-auth/
-
 /assets/fonts/.woff
   Access-Control-Allow-Origin:
   Content-Type: application/font-woff
