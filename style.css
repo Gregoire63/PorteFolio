@@ -1,5 +1,5 @@
-@font-face { font-family: OpenSans; src: url('./assets/font/OpenSans-VariableFont_wdth\,wght.ttf'); } 
-@font-face { font-family: OpenSans; font-weight: italic; src: url('./assets/font/OpenSans-Italic-VariableFont_wdth\,wght.ttf');}
+@font-face { font-family: OpenSans; src: url('./font/OpenSans-VariableFont_wdth\,wght.ttf'); } 
+@font-face { font-family: OpenSans; font-weight: italic; src: url('./font/OpenSans-Italic-VariableFont_wdth\,wght.ttf');}
 *{
     margin: 0;
     padding: 0;
