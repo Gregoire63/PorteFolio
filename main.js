@@ -51,6 +51,7 @@ const scrollEvent = (e) => {
   else {
     document.getElementById("nav-bar").style.top = "0px";
     document.getElementById('bottomArrow').style.bottom="-50px";
+    return
   }
   yScrollIndex = e.target.scrollTop/e.target.offsetHeight
   switch(true){
