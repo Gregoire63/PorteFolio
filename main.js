@@ -8,6 +8,7 @@ import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
 import XYZ from 'ol/source/XYZ';
 import {Attribution} from 'ol/control';
+import marker from "./assets/marker.png"
 
 const isitech = fromLonLat([4.82323, 45.72811]);
 const fac = fromLonLat([3.11360, 45.76073]);
@@ -17,7 +18,7 @@ const modaal = fromLonLat([4.84511,45.75206]);
 const flyArray = [lycee,fac,isitech,nicolas,modaal];
 const iconFeatures = [new Feature(new Point(lycee)), new Feature(new Point(fac)), new Feature(new Point(isitech)), new Feature(new Point(nicolas)), new Feature(new Point(modaal))];
 iconFeatures.forEach(iconFeature=>{
-    iconFeature.set('style', createStyle('/assets/marker.png', undefined));
+    iconFeature.set('style', createStyle(marker, undefined));
 })
 
 function sleep(ms) {
