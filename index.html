@@ -12,124 +12,169 @@
 	  <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <div class="background--custom">
-      <nav id="nav-bar">
-        <ul id="nav">
-          <li><a href="#home" id="nav-home" class="active">Présentation</a></li>
-          <li><a href="#school" id="nav-school">Études</a></li>
-          <li><a href="#work" id="nav-work">Expériences</a></li>
-          <li><a href="#capacities" id="nav-capacities">Compétences</a></li>
-        </ul>
-        <i class="fa-solid fa-bars menu"></i>
-      </nav>
-      <div class="container" id="main">
-        <div class="slider-block">
-          <div style="display: flex; flex-direction: column; justify-content:center; text-align: center; width:100%;">
-            <h1>Curiculom Vitae</h1>
-            <h2>Grégoire Raturat</h2>
+    <nav id="nav-bar">
+      <ul id="nav">
+        <li><a href="#home" id="nav-home" class="active">Présentation</a></li>
+        <li><a href="#school" id="nav-school">Études</a></li>
+        <li><a href="#work" id="nav-work">Expériences</a></li>
+        <li><a href="#capacities" id="nav-capacities">Compétences</a></li>
+      </ul>
+      <i class="fa-solid fa-bars menu"></i>
+    </nav>
+    <div class="container" id="main">
+      <div class="slider-block">
+        <div style="display: flex; flex-direction: column; width: 100%; text-align: center; justify-content: center;">
+          <div>
+              <img class="rounded-photo" src="assets/rounded_photo.png" alt="">
+              <h1 style="color: transparent; font-family: fantasy; -webkit-text-stroke: 1px black; font-weight: 900; text-transform: uppercase;">Grégoire Raturat</h1>
+              <div class='console-container'>
+                <span id='text' style="font-family: fantasy;"></span>
+                <div class='console-underscore' id='console'>&#95;</div>
+              </div>
+              <!-- <a href="./assets/cv/CV_Gregoire_Raturat.pdf" download="CV_Gregoire_Raturat.pdf" class="btn">Télécharger mon CV</a> -->
           </div>
-        </div>
-        <div class="slider-block" id="home">
-          <div class="slider-container">
-            <div class="card">
-              <div class="left">
-                <img src="assets/photoCV.jpg" alt="Me" class="photo"></img>
-              </div>
-              <div class="right">  
-                <div style="width: 100%;">  
-                  <div class='console-container'>
-                    <span id='text'></span>
-                    <div class='console-underscore' id='console'>&#95;</div>
-                  </div>
-                  <h2>Grégoire Raturat</h2>
-                  <p>Developpeur fullstack</p>
-                  <ul class="list">
-                    <li><p class="coord"><i class="fa-solid fa-calendar-days fa-gradient"></i>14 Juin, 1997</p></li>
-                    <li><p class="coord"><i class="fa fa-phone fa-gradient"></i>06 69 36 57 34</p></li>
-                    <li><a style="text-decoration: none;" href="mailto:gregoire.raturat@laposte.net"><p class="coord"><i class="fa fa-envelope fa-gradient"></i>gregoire.raturat@laposte.net</p></a></li>
-                    <li><a style="text-decoration: none;" href="https://www.google.fr/maps/place/Jean-Mac%C3%A9,+69007+Lyon/@45.7458191,4.8354537,15z/data=!3m1!4b1!4m5!3m4!1s0x47f4ea473c7f4117:0x18c3f999bdf81bfc!8m2!3d45.7465373!4d4.8426929"><p class="coord"><i class="fa fa-home fa-gradient"></i>Jean Macé, 69007 Lyon</p></a></li>
-                  </ul>
-                  <a href="https://www.linkedin.com/in/gr%C3%A9goire-raturat-b671091aa/"><i class="fa fa-linkedin fa-gradient"></i></a>
-                  <a href="https://github.com/Gregoire-isitech?tab=repositories"><i class="fa fa-github fa-gradient"></i></a>
-                  <a href="#"><i class="fa fa-facebook fa-gradient"></i></a>
-                </div>
-              </div>
+      </div>
+      </div>
+      <div class="slider-block" id="home">
+        <div class="slider-container">
+          <div class="card">
+            <div class="left">
+              <img src="assets/photoCV.jpg" alt="Me" class="photo"></img>
             </div>
-          </div>
-        </div>
-        <div class="slider-block">
-          <div class="slider-container">
-            <div class="card">
-                <div id="map" class="map">
-                  <div class="card-map" id="x-scroll">
-                    <section id="school"><h1>A</h1><button id="fly">Fly</button></section>
-                    <section><h1>B</h1></section>
-                    <section><h1>C</h1></section>
-                    <section id="work"><h1>A work</h1><button id="fly">Fly</button></section>
-                    <section><h1>B work</h1></section>
-                    <section><h1>C work</h1></section>
+            <div class="right">  
+              <div style="width: 100%;">  
+                <h2>Grégoire Raturat</h2>
+                <p>Developpeur Fullstack</p>
+                <div class="user-info">
+                  <div class="column">
+                    <ul class="list">
+                      <li><p class="coord"><i class="fa-solid fa-calendar-days fa-gradient"></i>14 Juin 1997</p></li>
+                      <li><a style="text-decoration: none;" href="mailto:gregoire.raturat@laposte.net"><p class="coord" style="word-break: break-all !important;"><i class="fa fa-envelope fa-gradient"></i>gregoire.raturat@laposte.net</p></a></li>
+                      <li><p class="coord"><i class="fa fa-phone fa-gradient"></i>06 69 36 57 34</p></li>
+                    </ul> 
+                  </div>
+                  <div class="column">
+                    <ul class="list">
+                      <li><p class="coord"><i class="fa-solid fa-business-time fa-gradient"></i></i>3 ans</p></li>
+                      <li><a style="text-decoration: none;" href="https://www.francecompetences.fr/recherche/rncp/34471/"><p class="coord"><i class="fa-solid fa-school fa-gradient"></i>Expert en Système d'Information</p></a></li>
+                      <li><a style="text-decoration: none;" href="https://www.google.fr/maps/place/Jean-Mac%C3%A9,+69007+Lyon/@45.7458191,4.8354537,15z/data=!3m1!4b1!4m5!3m4!1s0x47f4ea473c7f4117:0x18c3f999bdf81bfc!8m2!3d45.7465373!4d4.8426929"><p class="coord"><i class="fa fa-home fa-gradient"></i>Jean Macé Lyon</p></a></li>
+                    </ul>
                   </div>
                 </div>
+                
+                <a href="https://www.linkedin.com/in/gr%C3%A9goire-raturat-b671091aa/"><i class="fa fa-linkedin fa-gradient"></i></a>
+                <a href="https://github.com/Gregoire63"><i class="fa fa-github fa-gradient"></i></a>
+                <a href="#"><i class="fa fa-facebook fa-gradient"></i></a>
+              </div>
             </div>
           </div>
         </div>
-        <div class="slider-block" id="capacities">
-          <div class="slider-container">
-            <div class="card-capa">
-              <div class="tools_expert">
-                <div class="skill_main">
-                  <div class="skill_item">
-                    <h4>Travail en équipe <span class="counter">85</span>%</h4>
-                    <div class="progress_br">
-                      <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;"></div>
-                      </div>
+      </div>
+      <div class="slider-block">
+        <div class="slider-container">
+          <div class="card">
+            <div class="menuMap">
+              <input class="menuMap-toggler" id="menuMap-toggler" type="checkbox"></input>
+              <label for="menuMap-toggler"></label>
+              <ul id="map-background">
+                <li class="menuMap-item" id="bright-v2">
+                  <img src="./assets/layers/brigth.PNG"></img>
+                </li>
+                <li class="menuMap-item" id="hybrid"> 
+                  <img src="./assets/layers/hybrid.PNG"></img>
+                </li>
+                <li class="menuMap-item" id="openstreetmap">
+                  <img src="./assets/layers/osm.PNG"></img>
+                </li>
+                <li class="menuMap-item" id="streets-v2">
+                  <img src="./assets/layers/street.PNG"></img>
+                </li>
+                <li class="menuMap-item selected" id="topo-v2">
+                  <img src="./assets/layers/topo.PNG"></img>
+                </li>
+                <li class="menuMap-item" id="voyager-v2">
+                  <img src="./assets/layers/voyager.PNG"></img>
+                </li>
+              </ul>
+            </div>
+              <div id="map" class="map">
+                <div class="card-map" id="x-scroll">
+                  <section id="school">
+                    <h1>Baccalauréat Scientifiques</h1>
+                    <h3>Spécialité Science de la vie et de la Terre</h3>
+                  </section>
+                  <section>
+                    <h1>Licence Informatique</h1>
+                    <h3>Université Clermont Auvergne</h3>
+                  </section>
+                  <section>
+                    <h1>Master Expert en système d'information</h1>
+                    <h3>Isitech</h3>
+                  </section>
+                  <section id="work">
+                    <h1>Gestionnaire de magasin Nicolas</h1>
+                    <h3>Vente de spiritueux</h3>
+                  </section>
+                  <section>
+                    <h1>Developpeur alternant</h1>
+                    <h3>Modaal</h3>
+                  </section>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="slider-block" id="capacities">
+        <div class="slider-container">
+          <div class="card">
+            <div class="user-info">
+              <div class="column"> 
+                <div class="container-carousel">
+                  <div class="carousel">
+                    <div class="carousel__face" style="transform: rotateY(0deg) translateZ(120px);">
+                      <div class="carousel-text">VueJS</div>
+                      <img src="./assets/carrousel/vuejs.png"></img>
                     </div>
-                  </div>
-                  <div class="skill_item">
-                    <h4>Adaptibilité <span class="counter">90</span>%</h4>
-                    <div class="progress_br">
-                      <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
-                      </div>
+                    <div class="carousel__face" style="transform: rotateY(56deg) translateZ(140px);">
+                      <div class="carousel-text">Python</div>
+                      <img src="./assets/carrousel/python.png"></img>
                     </div>
-                  </div>
-                  <div class="skill_item">
-                    <h4>Créativité <span class="counter">70</span>%</h4>
-                    <div class="progress_br">
-                      <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
-                      </div>
+                    <div class="carousel__face" style="transform: rotateY(112deg) translateZ(140px);">
+                      <div class="carousel-text">NodeJs</div>
+                      <img src="./assets/carrousel/node.png"></img>
                     </div>
-                  </div>
-                  <div class="skill_item">
-                    <h4>Communication <span class="counter">75</span>%</h4>
-                    <div class="progress_br">
-                      <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%;"></div>
-                      </div>
+                    <div class="carousel__face" style="transform: rotateY(168deg) translateZ(140px);">
+                      <div class="carousel-text">Html/css</div>
+                      <img src="./assets/carrousel/html-css.png"></img>
                     </div>
-                  </div>
-                  <div class="skill_item">
-                  <h4>Compétences analytiques <span class="counter">95</span>%</h4>
-                    <div class="progress_br">
-                      <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
-                      </div>
+                    <div class="carousel__face" style="transform: rotateY(224deg) translateZ(140px);">
+                      <div class="carousel-text">C / C# </div>
+                      <img src="./assets/carrousel/c.png"></img>
+                    </div>
+                    <div class="carousel__face" style="transform: rotateY(280deg) translateZ(140px);">
+                      <div class="carousel-text">Docker</div>
+                      <img src="./assets/carrousel/docker.png"></img>
                     </div>
                   </div>
                 </div>
               </div>
+              <div class="column">
+                <p>VueJS - React</p>
+                <p>NodeJs</p>
+                <p>Python</p>
+                <p>Openlayers</p>
+                <p>PostgrSQL - MongoDB</p>
+              </div>
             </div>
-            <div class="card-capa"></div>
-            <div class="card-capa"></div>
-            <div class="card-capa"></div>
           </div>
         </div>
       </div>
     </div>
+    <!-- Scroll to Bottom -->
+    <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom" id="bottomArrow"></i>
   </body>
   <script src="https://unpkg.com/elm-pep@1.0.6/dist/elm-pep.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
   <script type="module" src="main.js"></script>
   <script>
     var darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
