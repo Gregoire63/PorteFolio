@@ -52,6 +52,11 @@ const scrollEvent = (e) => {
   else {
     document.getElementById("nav-bar").style.top = "0px";
     document.getElementById('bottomArrow').style.bottom="-50px";
+    document.getElementById('main').addEventListener('touchend', endTouchEvent);
+    document.getElementById('main').addEventListener('touchstart', function(ev) {
+      if(isFlying)
+        ev.preventDefault();
+    }, false);
     return
   }
   yScrollIndex = e.target.scrollTop/e.target.offsetHeight
@@ -65,7 +70,6 @@ const scrollEvent = (e) => {
       document.getElementById('main').addEventListener('wheel', wheelEvent);
       document.getElementById('main').addEventListener('scroll', wheelEvent);
       document.getElementById('main').addEventListener('mousewheel', wheelEvent);
-      document.getElementById('main').addEventListener('touchmove', wheelEvent);
       xScrollIndex>2?setMenuSelected('nav-work'):setMenuSelected('nav-school')
       break
     case (yScrollIndex<4 && yScrollIndex>=3):
@@ -79,9 +83,30 @@ function removeScrollEvent(){
   document.getElementById('main').removeEventListener('scroll', wheelEvent);
   document.getElementById('main').addEventListener('scroll', scrollEvent);
   document.getElementById('main').removeEventListener('mousewheel', wheelEvent);
-  document.getElementById('main').removeEventListener('touchmove', wheelEvent);
 }
 var isScrolling = false
+
+const endTouchEvent = async (e) => {
+    setTimeout(()=>{
+      yScrollIndex = Math.round(document.getElementById('main').scrollTop/e.view.innerHeight)
+    },900)
+    setTimeout(()=>{
+      const xPos = Math.round(document.getElementById('x-scroll').scrollLeft/e.view.innerWidth)
+      if(xPos!=xScrollIndex){
+        const arrow = document.getElementById('rightArrow')
+        if(xPos>3.7){
+          arrow.classList.replace("fa-arrow-right-long","fa-arrow-left-long")
+        }
+        if(xPos<0.3){
+          arrow.classList.replace("fa-arrow-left-long","fa-arrow-right-long")
+        }
+        xScrollIndex = xPos
+        if(!isFlying)
+          fly()
+      }
+    },700)
+}
+
 const wheelEvent = async (e) => {
   if((xScrollIndex<0 &&  e.deltaY<0) || (xScrollIndex>flyArray.length-1 && e.deltaY>0)){
     removeScrollEvent()
@@ -164,6 +189,14 @@ const navLinks = document.getElementById("nav")
 
 menuHamburger.addEventListener('click',()=>{
   navLinks.classList.toggle('mobile-menu')
+  if(menuHamburger.classList.contains("fa-bars")){
+    menuHamburger.classList.replace("fa-bars","fa-xmark")
+    document.getElementById('bottomArrow').style.bottom="-50px";
+  }
+  else {
+    menuHamburger.classList.replace("fa-xmark","fa-bars")
+    document.getElementById('bottomArrow').style.bottom="30px";
+  }
 })
 
 
@@ -176,7 +209,7 @@ if(window.innerWidth>800)
   });
 else
   view = new View({
-    center: [lycee[0],lycee[1]-600],
+    center: [lycee[0],lycee[1]+600],
     zoom: 15,
   });
 const attributions =
@@ -222,6 +255,9 @@ onClick('map-background', async function (e) {
 })
 function setBackground(target){
   const name = target.id
+  if(name=="hybrid")
+    document.querySelector(".menuMap label").classList.add("white")
+  else document.querySelector(".menuMap label").classList.remove("white")
   target.classList.add("selected");
   const menu = document.querySelectorAll(".menuMap .menuMap-item")
   menu.forEach(m=> m.id!=name?m.classList.remove("selected"):null)
@@ -232,9 +268,9 @@ function setBackground(target){
     else{ 
       layer.setVisible(false)
     }
-})
+  })
+  setTimeout(()=>{document.querySelector(".menuMap-toggler").checked = 0},200)
 }
-
 // Catch click event 
 function onClick(id, callback) {
     document.getElementById(id).addEventListener('click', callback);
@@ -249,7 +285,7 @@ async function fly(up) {
   layer.clear()
   layer.addFeature(iconFeatures[xScrollIndex])
   await sleep(10)
-  flyTo([flyArray[xScrollIndex][0]+(window.innerWidth>800?+window.innerWidth+100:0),flyArray[xScrollIndex][1]-(window.innerWidth<=800?700:0)], function () {});
+  flyTo([flyArray[xScrollIndex][0]+(window.innerWidth>800?+window.innerWidth+100:0),flyArray[xScrollIndex][1]+(window.innerWidth<=800?700:0)], function () {});
 };
 function flyTo(location, done) {
     const duration = 2000;
