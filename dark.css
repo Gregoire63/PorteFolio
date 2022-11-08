@@ -1,0 +1,101 @@
+body{
+    margin: 0px;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #5837D0, #000);
+    background-size: 100% 120%;
+    color: #FFF;
+}
+.fa-gradient {
+    background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#5837D0));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: 30px;
+    margin-right: 10px;
+}
+a .fa-gradient:hover {
+    background: -webkit-gradient(linear, left top, left bottom, from(#5837D0), to(#7DE5ED));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+nav ul li a
+{
+   text-decoration: none;
+   padding: 6px 15px;
+   color: #fff;
+   font-weight: bold;
+   border-radius: 20; 
+}
+.card-map{
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    width: 50%;
+    text-align: center;
+    background-color: #2A2A2A; 
+    opacity: .9;
+    z-index:2;
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    right: 20px;
+    scroll-snap-type: x mandatory;
+    display: flex;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    overflow-x: scroll;
+}
+.coord {
+    color: #FFF;
+    font-size: 18px;
+}
+.name-title{
+    color: transparent; 
+    font-family: fantasy; 
+    -webkit-text-stroke: 1px white; 
+    font-weight: 900; 
+    text-transform: uppercase;
+}
+.console-underscore {
+    color: #FFF;
+    display:inline-block;
+}
+.capacities{
+    display: flex; 
+    flex-direction:column; 
+    align-items: center;
+    border-width: 3px;
+    border-style: solid;
+    padding: 10px;
+    border-image: linear-gradient( to left, white, #5837D0 ) 100% 1;
+}
+.capacities p a{
+    text-decoration: none;
+    color: #FFF;
+}
+@media screen and (max-width: 800px) {
+    .card-map{
+        width: 98%;
+        height: 60%;
+        top: 2px;
+        left: 2px;
+        right: 2px;
+    }
+    .mobile-menu li a{
+        color: #000;
+        margin-top: 20px;
+        font-size: 1.7em;
+        font-weight: bold;
+    }
+    nav ul{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(255,255,255,0.4);
+        backdrop-filter: blur(5px);
+        width: 100%;
+        margin-left: -100%;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        transition: all 0.5s ease;
+    }
+}

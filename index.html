@@ -10,6 +10,7 @@
     <link rel="icon" type="image/svg" href="./assets/favicon.svg" sizes="192x192">
 	  <link rel="shortcut icon" href="./assets/favicon.svg" type="image/x-icon">
 	  <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="light.css" id="theme">
   </head>
   <body>
     <nav id="nav-bar">
@@ -26,7 +27,7 @@
         <div style="display: flex; flex-direction: column; width: 100%; text-align: center; justify-content: center;">
           <div>
               <img class="rounded-photo" src="assets/rounded_photo.png" alt="">
-              <h1 style="color: transparent; font-family: fantasy; -webkit-text-stroke: 1px black; font-weight: 900; text-transform: uppercase;">Grégoire Raturat</h1>
+              <h1 class="name-title">Grégoire Raturat</h1>
               <div class='console-container'>
                 <span id='text' style="font-family: fantasy;"></span>
                 <div class='console-underscore' id='console'>&#95;</div>
@@ -42,7 +43,7 @@
               <img src="assets/photoCV.jpg" alt="Me" class="photo"></img>
             </div>
             <div class="right">  
-              <div style="width: 100%;">  
+              <div style="width: 100%;" id="information">  
                 <h2>Grégoire Raturat</h2>
                 <p>Developpeur Fullstack</p>
                 <div class="user-info">
@@ -83,7 +84,7 @@
                   <h6>Spécialité Informatique et Sciences du Numériques</h6>
                 </section>
                 <section>
-                  <a href="https://www.uca.fr/" target="_blank"><img src="assets/logo/uca.png" style="width: 200px; cursor: pointer;"></img></a>
+                  <a href="https://www.uca.fr/" target="_blank"><img src="assets/logo/uca.png" style="width: 100px; cursor: pointer;"></img></a>
                   <h1>Licence Informatique</h1>
                   <h3>Université Clermont Auvergne</h3>
                 </section>
@@ -98,7 +99,7 @@
                   <h3>Vente de spiritueux</h3>
                 </section>
                 <section>
-                  <a href="https://www.modaal.fr/" target="_blank"><img src="assets/logo/MODAAL_V4-03.png" class="logo"></img></a>
+                  <a href="https://www.modaal.fr/" target="_blank"><img id="modaal" src="assets/logo/MODAAL_V4-03.png" class="logo"></img></a>
                   <h1>Developpeur alternant</h1>
                   <h3>Modaal</h3>
                 </section>
@@ -135,7 +136,7 @@
         <div class="slider-container">
           <div class="card">
             <div class="user-info">
-              <div class="column"> 
+              <div class="column fullheight" id="capa_left"> 
                 <div class="container-carousel">
                   <div class="carousel">
                     <div class="carousel__face" style="transform: rotateY(0deg) translateZ(120px);">
@@ -164,13 +165,28 @@
                     </div>
                   </div>
                 </div>
+                <div class="capacities">
+                  <p>
+                    <a href="https://vuejs.org/" target="_blank">VueJS </a> - 
+                    <a href="https://fr.reactjs.org/" target="_blank">React</a>
+                  </p>
+                  <p> <a href="https://nodejs.org/" target="_blank">NodeJs</a></p>
+                  <p> <a href="https://www.python.org/" target="_blank">Python</a></p>
+                  <p> <a href="https://developer.mozilla.org/fr/docs/Web/HTML" target="_blank">Html</a> / <a href="https://developer.mozilla.org/fr/docs/Web/CSS" target="_blank">Css</a> </p>
+                  <p> <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript" target="_blank">&nbsp;JavaScript</a></p>
+                  <p> <a href="https://openlayers.org/" target="_blank">Openlayers</a></p>
+                  <p> <a href="https://www.postgresql.org/" target="_blank">PostgreSQL</a> - <a href="https://www.mongodb.com/fr-fr" target="_blank">MongoDB</a></p>
+                </div>
               </div>
-              <div class="column">
-                <p>VueJS - React</p>
-                <p>NodeJs</p>
-                <p>Python</p>
-                <p>Openlayers</p>
-                <p>PostgrSQL - MongoDB</p>
+              <div class="column" id="capa_right">
+                <h3 style="margin-bottom:10px;margin-top:10px;">Portefolio</h3>
+                <figure class="icon-cards mt-3">
+                  <div class="icon-cards__content">
+                    <div class="icon-cards__item" style="transform: rotateY(0) translateZ(35vw);"><a href="https://geofriches.fr/" target="_blank"><img src="./assets/portefolio/geofriches.PNG"></img></a></div>
+                    <div class="icon-cards__item" style="transform: rotateY(120deg) translateZ(35vw);"><img src="./assets/portefolio/CutWait.png"></img></div>
+                    <div class="icon-cards__item" style="transform: rotateY(240deg) translateZ(35vw);"><img src="./assets/portefolio/NextMusic.PNG"></img></div>
+                  </div>
+                </figure>
               </div>
             </div>
           </div>
@@ -195,12 +211,16 @@
       }
       // replace icons with dark/light themes as appropriate
       if(darkModeOn){
-        favicon.href = './assets/favicon-dark.svg';
-        largeFavicon.href = '/assets/favicon-dark.svg';
+        favicon.href = './assets/icon/favicon-dark.svg';
+        largeFavicon.href = '/assets/icon/favicon-dark.svg';
+        document.getElementById("modaal").src='assets/logo/MODAAL_V4-06.png';
+        document.getElementById("theme").href='dark.css';
         // document.querySelector('body').style.background= 'linear-gradient(.25turn, #5837D0, #000)'
       }else{
-        favicon.href = './assets/favicon.svg';
-        largeFavicon.href = '/assets/favicon.svg';
+        document.getElementById("modaal").src='assets/logo/MODAAL_V4-03.png';
+        document.getElementById("theme").href='light.css';
+        favicon.href = './assets/icon/favicon.svg';
+        largeFavicon.href = '/assets/icon/favicon.svg';
       }
     }
     darkModeMediaQuery.addListener(handleDarkmode);

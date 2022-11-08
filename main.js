@@ -8,7 +8,6 @@ import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
 import XYZ from 'ol/source/XYZ';
 import {Attribution} from 'ol/control';
-import marker from "./assets/marker.png"
 
 const isitech = fromLonLat([4.82323, 45.72811]);
 const fac = fromLonLat([3.11360, 45.76073]);
@@ -18,7 +17,7 @@ const modaal = fromLonLat([4.84511,45.75206]);
 const flyArray = [lycee,fac,isitech,nicolas,modaal];
 const iconFeatures = [new Feature(new Point(lycee)), new Feature(new Point(fac)), new Feature(new Point(isitech)), new Feature(new Point(nicolas)), new Feature(new Point(modaal))];
 iconFeatures.forEach(iconFeature=>{
-    iconFeature.set('style', createStyle(marker, undefined));
+    iconFeature.set('style', createStyle("./assets/marker.png", undefined));
 })
 
 function sleep(ms) {
@@ -61,12 +60,20 @@ const scrollEvent = (e) => {
   }
   yScrollIndex = e.target.scrollTop/e.target.offsetHeight
   switch(true){
-    case (yScrollIndex<1.2 && yScrollIndex>0.8):
+    case yScrollIndex<0.5:
+      document.querySelector(".photo").style.marginRight="70vw";
+      document.getElementById("information").style.opacity="0"
+      break
+    case (yScrollIndex<=1.5 && yScrollIndex>=0.5):
       gotToStart=false
+      document.getElementById("information").style.opacity=`${yScrollIndex-.5>.5?1-Math.abs((1-yScrollIndex)*2):(yScrollIndex-.5)*2}`
+      document.querySelector(".photo").style.marginRight=`${window.innerWidth*.6*(Math.abs(yScrollIndex-1))}px`;
       setMenuSelected('nav-home')
       break
-    case (yScrollIndex < 3 && yScrollIndex > 1.2): 
-      if(gotToEnd || gotToStart)break
+    case (yScrollIndex < 3 && yScrollIndex > 1.5): 
+      document.querySelector(".photo").style.marginRight="70vw";
+      document.getElementById("information").style.opacity="0"
+      if(gotToEnd || gotToStart) break
       document.getElementById('main').addEventListener('wheel', wheelEvent);
       document.getElementById('main').addEventListener('scroll', wheelEvent);
       document.getElementById('main').addEventListener('mousewheel', wheelEvent);
@@ -74,6 +81,7 @@ const scrollEvent = (e) => {
       break
     case (yScrollIndex<4 && yScrollIndex>=3):
       setMenuSelected('nav-capacities')
+      document.getElementById("capa_left").style.marginRight = `${window.innerWidth*.6*(Math.abs(yScrollIndex-3))}px`;
       gotToEnd=false
       break
   }
@@ -182,6 +190,8 @@ onClick('nav', async function (e) {
       break;
   }
   document.getElementById("nav").classList.toggle('mobile-menu')
+  menuHamburger.classList.replace("fa-xmark","fa-bars")
+
 });
 //Menu phone
 const menuHamburger = document.querySelector(".menu")
@@ -209,7 +219,7 @@ if(window.innerWidth>800)
   });
 else
   view = new View({
-    center: [lycee[0],lycee[1]+600],
+    center: [lycee[0],lycee[1]+900],
     zoom: 15,
   });
 const attributions =
@@ -285,7 +295,7 @@ async function fly(up) {
   layer.clear()
   layer.addFeature(iconFeatures[xScrollIndex])
   await sleep(10)
-  flyTo([flyArray[xScrollIndex][0]+(window.innerWidth>800?+window.innerWidth+100:0),flyArray[xScrollIndex][1]+(window.innerWidth<=800?700:0)], function () {});
+  flyTo([flyArray[xScrollIndex][0]+(window.innerWidth>800?+window.innerWidth+100:0),flyArray[xScrollIndex][1]+(window.innerWidth<=800?900:0)], function () {});
 };
 function flyTo(location, done) {
     const duration = 2000;
@@ -340,14 +350,12 @@ function createStyle(src, img) {
 consoleText(["Web Developer", "Front End Developer", "Back End Developer", "Apps Developer"], 'text');
 
 function consoleText(words, id) {
-  var colors = '#000';
   var visible = true;
   var con = document.getElementById('console');
   var letterCount = 1;
   var x = 1;
   var waiting = false;
   var target = document.getElementById(id)
-  target.setAttribute('style', 'color:' + colors)
   window.setInterval(function() {
     if (letterCount === 0 && waiting === false) {
       waiting = true;
@@ -356,7 +364,6 @@ function consoleText(words, id) {
         var usedWord = words.shift();
         words.push(usedWord);
         x = 1;
-        target.setAttribute('style', 'color:' + colors)
         letterCount += x;
         waiting = false;
       }, 1500)
