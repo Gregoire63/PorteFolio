@@ -10,7 +10,7 @@
     <link rel="icon" type="image/svg" href="./assets/gr_favicon.svg" sizes="192x192">
 	  <link rel="shortcut icon" href="./assets/gr_favicon.svg" type="image/x-icon">
 	  <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" href="light.css" id="theme">
+    <!-- <link rel="stylesheet" href="light.css" id="theme"> -->
   </head>
   <body>
     <nav id="nav-bar">
@@ -258,7 +258,18 @@
   <script src="https://unpkg.com/elm-pep@1.0.6/dist/elm-pep.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
   <script type="module" src="main.js"></script>
-  <script>
+  <script type="module">
+    import fav from './assets/icon/gr_favicon.svg'
+    import fav_dark from './assets/icon/gr_favicon-dark.svg'
+    import modaal_dark from './assets/logo/MODAAL_V4-06.png'
+    import modaal from './assets/logo/MODAAL_V4-03.png'
+    import css_light from './light.css'
+    import css_dark from '/dark.css'
+    const link = document.createElement('link')
+    link.rel = 'stylesheet'
+    link.id = 'theme'
+    link.href = css_light
+    document.head.appendChild(link)
     var darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     handleDarkmode(darkModeMediaQuery);
     function handleDarkmode(e){
@@ -268,18 +279,19 @@
       if(!favicon || !largeFavicon){
         return; 
       }
+
       // replace icons with dark/light themes as appropriate
       if(darkModeOn){
-        favicon.href = './assets/icon/gr_favicon-dark.svg';
-        largeFavicon.href = '/assets/icon/gr_favicon-dark.svg';
-        document.getElementById("modaal").src='assets/logo/MODAAL_V4-06.png';
+        favicon.href = fav_dark;
+        largeFavicon.href = fav_dark;
+        document.getElementById("modaal").src= modaal_dark;
         document.getElementById("theme").href='dark.css';
         // document.querySelector('body').style.background= 'linear-gradient(.25turn, #5837D0, #000)'
       }else{
-        document.getElementById("modaal").src='assets/logo/MODAAL_V4-03.png';
+        document.getElementById("modaal").src= modaal;
         document.getElementById("theme").href='light.css';
-        favicon.href = './assets/icon/gr_favicon.svg';
-        largeFavicon.href = '/assets/icon/gr_favicon.svg';
+        favicon.href =  fav;
+        largeFavicon.href = fav;
       }
     }
     darkModeMediaQuery.addListener(handleDarkmode);
