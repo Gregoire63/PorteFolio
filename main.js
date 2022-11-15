@@ -225,7 +225,7 @@ onClick('bottomArrow', async function (e) {
 var view
 if(window.innerWidth>800)
   view = new View({
-    center: [lycee[0]+window.innerWidth+100,lycee[1]],
+    center: [lycee[0]+window.innerWidth-300,lycee[1]],
     zoom: 15,
   });
 else
@@ -306,7 +306,7 @@ async function fly(up) {
   layer.clear()
   layer.addFeature(iconFeatures[xScrollIndex])
   await sleep(10)
-  flyTo([flyArray[xScrollIndex][0]+(window.innerWidth>800?+window.innerWidth+100:0),flyArray[xScrollIndex][1]-(window.innerWidth<=800?900:0)], function () {});
+  flyTo([flyArray[xScrollIndex][0]+(window.innerWidth>800?+window.innerWidth-300:0),flyArray[xScrollIndex][1]-(window.innerWidth<=800?900:0)], function () {});
 };
 function flyTo(location, done) {
     const duration = 2000;
