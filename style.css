@@ -265,8 +265,6 @@ nav ul li a:hover
   overflow-x: scroll;
   overflow-y: hidden;
 }
-.card-map section a img{}
-.card-map section a img{}
 
 @media screen and (max-width: 800px) {
   .card-map section .card:hover .card-inner {
