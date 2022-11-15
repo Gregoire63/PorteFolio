@@ -263,7 +263,7 @@ nav ul li a:hover
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
   overflow-x: scroll;
-  overflow-Y: hidden;
+  overflow-y: hidden;
 }
 .card-map section a img{}
 .card-map section a img{}
