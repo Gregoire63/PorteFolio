@@ -8,7 +8,7 @@ import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
 import XYZ from 'ol/source/XYZ';
 import {Attribution} from 'ol/control';
-import map_marker from './assets/map_marker.PNG'
+import map_marker from './assets/layers/map_marker.png'
 
 const isitech = fromLonLat([4.82323, 45.72811]);
 const fac = fromLonLat([3.11360, 45.76073]);
