@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="node_modules/ol/ol.css">
     <script src="https://kit.fontawesome.com/3c001a8667.js" crossorigin="anonymous"></script>
     <!-- Favicons Theme -->
-    <link rel="icon" type="image/svg" href="./assets/favicon.svg" sizes="192x192">
-	  <link rel="shortcut icon" href="./assets/favicon.svg" type="image/x-icon">
+    <link rel="icon" type="image/svg" href="./assets/gr_favicon.svg" sizes="192x192">
+	  <link rel="shortcut icon" href="./assets/gr_favicon.svg" type="image/x-icon">
 	  <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="light.css" id="theme">
   </head>
@@ -270,16 +270,16 @@
       }
       // replace icons with dark/light themes as appropriate
       if(darkModeOn){
-        favicon.href = './assets/icon/favicon-dark.svg';
-        largeFavicon.href = '/assets/icon/favicon-dark.svg';
+        favicon.href = './assets/icon/gr_favicon-dark.svg';
+        largeFavicon.href = '/assets/icon/gr_favicon-dark.svg';
         document.getElementById("modaal").src='assets/logo/MODAAL_V4-06.png';
         document.getElementById("theme").href='dark.css';
         // document.querySelector('body').style.background= 'linear-gradient(.25turn, #5837D0, #000)'
       }else{
         document.getElementById("modaal").src='assets/logo/MODAAL_V4-03.png';
         document.getElementById("theme").href='light.css';
-        favicon.href = './assets/icon/favicon.svg';
-        largeFavicon.href = '/assets/icon/favicon.svg';
+        favicon.href = './assets/icon/gr_favicon.svg';
+        largeFavicon.href = '/assets/icon/gr_favicon.svg';
       }
     }
     darkModeMediaQuery.addListener(handleDarkmode);
