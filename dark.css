@@ -25,24 +25,7 @@ nav ul li a
    font-weight: bold;
    border-radius: 20; 
 }
-.card-map{
-    -moz-border-radius: 15px;
-    border-radius: 15px;
-    width: 50%;
-    text-align: center;
-    background-color: #2A2A2A; 
-    opacity: .9;
-    z-index:2;
-    position: absolute;
-    top: 20px;
-    bottom: 20px;
-    right: 20px;
-    scroll-snap-type: x mandatory;
-    display: flex;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-    overflow-x: scroll;
-}
+
 .coord {
     color: #FFF;
     font-size: 18px;
@@ -53,6 +36,14 @@ nav ul li a
     -webkit-text-stroke: 1px white; 
     font-weight: 900; 
     text-transform: uppercase;
+}
+.console-container {
+    font-size:30px;
+    text-align:center;
+    width:100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color:white;
 }
 .console-underscore {
     color: #FFF;
@@ -71,14 +62,65 @@ nav ul li a
     text-decoration: none;
     color: #FFF;
 }
+.btn {
+    border: 2px solid white;
+    background-color: transparent;
+    border-radius: 10%;
+    text-decoration: none;
+    color: white;
+    padding: 6px 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.card-map section .card-front {
+    background-color: rgba(0, 0, 0, 1);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.card-map section .card-back {
+    transform: rotateY(180deg);
+    background-color:rgba(0, 0, 0, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.card-map section .card-back a {
+    display: block;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    text-decoration: none;
+    color: white;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+    z-index: 1;
+}
+.card-map section .card-back a:after {
+    content: '';
+    display: block;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    right: 1.25rem;
+    left: 1.25rem;
+    background-color: #fff;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+    transform-origin: bottom center;
+    z-index: -1;
+}
+.card-map section .card-back a:hover {
+    color: #2d2d2d;
+}
+.card-map section .card-back a:hover:after {
+    right: 0;
+    left: 0;
+    height: 100%;
+}
 @media screen and (max-width: 800px) {
-    .card-map{
-        width: 98%;
-        height: 60%;
-        top: 2px;
-        left: 2px;
-        right: 2px;
-    }
     .mobile-menu li a{
         color: #000;
         margin-top: 20px;

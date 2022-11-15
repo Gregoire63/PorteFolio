@@ -37,20 +37,21 @@ let cardItems = document.querySelectorAll(".card-map section");
 cardItems = new Array(...cardItems);
 var xScrollIndex = 0
 var yScrollIndex = 0
+var bottomArrow = document.getElementById('bottomArrow')
 const scrollEvent = (e) => {
   //map.updateSize()
   if(e.target.offsetWidth>800){
     if (e.target.scrollTop/e.target.offsetHeight > 0.99 ) {
       document.getElementById("nav-bar").style.top = "15px";
-      document.getElementById('bottomArrow').style.bottom="-50px";
+      bottomArrow.style.bottom="-50px";
     } else {
       document.getElementById("nav-bar").style.top = "-50px";
-      document.getElementById('bottomArrow').style.bottom="30px";
+      bottomArrow.style.bottom="30px";
     }
   }
   else {
     document.getElementById("nav-bar").style.top = "0px";
-    document.getElementById('bottomArrow').style.bottom="-50px";
+    bottomArrow.style.bottom="-50px";
     document.getElementById('main').addEventListener('touchend', endTouchEvent);
     document.getElementById('main').addEventListener('touchstart', function(ev) {
       if(isFlying)
@@ -97,17 +98,22 @@ var isScrolling = false
 const endTouchEvent = async (e) => {
     setTimeout(()=>{
       yScrollIndex = Math.round(document.getElementById('main').scrollTop/e.view.innerHeight)
+      switch(yScrollIndex){
+        case 1:
+          setMenuSelected('nav-home')
+          break
+        case 2:
+          xScrollIndex>2?setMenuSelected('nav-work'):setMenuSelected('nav-school')
+          break
+        case 3:
+          setMenuSelected('nav-capacities')
+          break
+      }
+      
     },900)
     setTimeout(()=>{
       const xPos = Math.round(document.getElementById('x-scroll').scrollLeft/e.view.innerWidth)
       if(xPos!=xScrollIndex){
-        const arrow = document.getElementById('rightArrow')
-        if(xPos>3.7){
-          arrow.classList.replace("fa-arrow-right-long","fa-arrow-left-long")
-        }
-        if(xPos<0.3){
-          arrow.classList.replace("fa-arrow-left-long","fa-arrow-right-long")
-        }
         xScrollIndex = xPos
         if(!isFlying)
           fly()
@@ -201,14 +207,19 @@ menuHamburger.addEventListener('click',()=>{
   navLinks.classList.toggle('mobile-menu')
   if(menuHamburger.classList.contains("fa-bars")){
     menuHamburger.classList.replace("fa-bars","fa-xmark")
-    document.getElementById('bottomArrow').style.bottom="-50px";
+    bottomArrow.style.bottom="-50px";
   }
   else {
     menuHamburger.classList.replace("fa-xmark","fa-bars")
-    document.getElementById('bottomArrow').style.bottom="30px";
+    bottomArrow.style.bottom="30px";
   }
 })
-
+onClick('bottomArrow', async function (e) {
+  setMenuSelected('nav-home')
+  document.getElementById('home').scrollIntoView({ 
+    behavior: 'smooth'
+  })
+})
 
 // Init Maps
 var view
@@ -219,7 +230,7 @@ if(window.innerWidth>800)
   });
 else
   view = new View({
-    center: [lycee[0],lycee[1]+900],
+    center: [lycee[0],lycee[1]-900],
     zoom: 15,
   });
 const attributions =
@@ -295,11 +306,11 @@ async function fly(up) {
   layer.clear()
   layer.addFeature(iconFeatures[xScrollIndex])
   await sleep(10)
-  flyTo([flyArray[xScrollIndex][0]+(window.innerWidth>800?+window.innerWidth+100:0),flyArray[xScrollIndex][1]+(window.innerWidth<=800?900:0)], function () {});
+  flyTo([flyArray[xScrollIndex][0]+(window.innerWidth>800?+window.innerWidth+100:0),flyArray[xScrollIndex][1]-(window.innerWidth<=800?900:0)], function () {});
 };
 function flyTo(location, done) {
     const duration = 2000;
-    const zoom = view.getZoom();
+    const zoom = 15;
     let parts = 2;
     let called = false;
     isFlying = true;
@@ -391,4 +402,49 @@ function consoleText(words, id) {
       visible = true;
     }
   }, 400)
+}
+
+
+const imgs = document.getElementById('imgs')
+const img = document.querySelectorAll('#imgs img')
+var hover = false
+
+imgs.addEventListener('mouseover', function(e){
+  hover = true
+})
+imgs.addEventListener('mouseout', function(e){
+  hover = false
+})
+onClick('carrousel-arrow-left', async function (e) {
+  idx--
+  changeImage()
+  resetInterval()
+})
+onClick('carrousel-arrow-right', async function (e) {
+  idx++
+  changeImage()
+  resetInterval()
+})
+let idx = 0
+let interval = setInterval(run, 8000);
+
+function run() {
+    idx++
+
+    changeImage()
+}
+
+function changeImage() {
+    if(idx > img.length -1) {
+        idx = 0
+    }else if(idx < 0) {
+        idx = img.length -1
+    }
+    if(!hover)
+      imgs.style.transform = `translateX(calc(${-idx} * 100%))`
+}
+
+function resetInterval() {
+    clearInterval(interval)
+    interval = setInterval(run, 8000)
 }
