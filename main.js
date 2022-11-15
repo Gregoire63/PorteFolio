@@ -17,7 +17,7 @@ const modaal = fromLonLat([4.84511,45.75206]);
 const flyArray = [lycee,fac,isitech,nicolas,modaal];
 const iconFeatures = [new Feature(new Point(lycee)), new Feature(new Point(fac)), new Feature(new Point(isitech)), new Feature(new Point(nicolas)), new Feature(new Point(modaal))];
 iconFeatures.forEach(iconFeature=>{
-    iconFeature.set('style', createStyle("./assets/layers/map_marker.png", undefined));
+    iconFeature.set('style', createStyle("./assets/map_marker.PNG", undefined));
 })
 
 function sleep(ms) {
